@@ -69,30 +69,49 @@ namespace CarFinder.Controllers
 
             var bingAccountKey = "h2OeY0azx627HoTtjXgaDKCnUpilrEGIToSKkEb2EWI";
             var image = "";
+            string query = car.model_year + " " + car.make + " " + car.model_name + " " + car.model_trim;
+            string rootURL = "https://api.datamarket.azure.com/Bing/search/";
+            var bingContainer = new Bing.BingSearchContainer(new Uri(rootURL));
+            string market = "en-us";
+            bingContainer.Credentials = new NetworkCredential(bingAccountKey, bingAccountKey);
+                //ConfigurationManager.AppSettings["bing"]);
 
-            var images = new Bing.BingSearchContainer(new Uri("https://api.datamarket.azure.com/Bing/search/"));
-            images.Credentials = new NetworkCredential(bingAccountKey,
-                ConfigurationManager.AppSettings["bing"]);
-            var marketData = images.Composite(
-                "image",
-                car.model_year + " " + car.make + " " + car.model_name + " " + car.model_trim,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
-                ).Execute();
+            var imageQuery = bingContainer.Image(query, null, market, null, null, null, null);
+            imageQuery = imageQuery.AddQueryOption("$top", 3);
+            var imageResults = imageQuery.Execute().ToList();
+            //var marketData = images.Composite(
+            //    "image",
+            //    car.model_year + " " + car.make + " " + car.model_name + " " + car.model_trim,
+            //    null,
+            //    null,
+            //    null,
+            //    null,
+            //    null,
+            //    null,
+            //    null,
+            //    null,
+            //    null,
+            ////    null,
+            //    null,
+            //    null,
+            //    null
+            //    ).Execute();
 
-            image = marketData.First().Image.First().MediaUrl;
-            carView.Image = image;
+
+            //carView.Image1= imageResults.ElementAt(0).MediaUrl;
+            //carView.Image2 = imageResults.ElementAt(1).MediaUrl;
+            //carView.Image3 = imageResults.ElementAt(2).MediaUrl;
+
+            //foreach (var result in imageResults)
+            //{
+            //    carView.Image1 = result.MediaUrl;
+            //}
+
+            carView.Images = imageResults.Select(m => m.MediaUrl).ToList();
+            //carView.Image1 = imageResults.ElementAt(0).MediaUrl ?? "";
+            //carView.Image2 = imageResults.ElementAt(1).MediaUrl ?? "";
+
+            //carView.Image3 = imageResults.ElementAtOrDefault(0).MediaUrl;
 
             return Ok(carView);
         }
@@ -286,8 +305,10 @@ namespace CarFinder.Controllers
     {
         public Car Car { get; set; }
         public dynamic Recalls { get; set; }
-        public string Image { get; set; }
-
+        public string Image1 { get; set; }
+        public string Image2 { get; set; }
+        public string Image3 { get; set; }
+        public List<string> Images { get; set;}
     }
 
 }

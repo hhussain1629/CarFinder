@@ -15,13 +15,19 @@
                 <select ng-model="selectedTrim" ng-options="trim for trim in trims" ng-change="getCar()" class=" = " form-control></select>
             </div>
         </div>
-        
-            <p>
-                {{car}}
-            </p>
-        
-        
-        
+
+        <div>
+            {{car}}
+        </div>
+        <div ng-repeat="img in car.Images">
+            <img src="{{img}}" alt="" />
+            @*<img src="{{car.Image1}}" alt="" />*@
+            @*<img src="{{car.Image2}}" alt="" />*@
+            @*<img src="{{car.Image3}}" alt="" />*@
+        </div>
+
+
+
     </div>
 </div>
 
