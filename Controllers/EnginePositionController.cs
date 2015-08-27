@@ -17,6 +17,10 @@ namespace CarFinder.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Mid-Engined Cars
+        /// <summary>
+        /// Get all cars with an engine in the middle
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Car> GetMidEnginedCars()
         {
             var retval = db.Database.SqlQuery<Car>("EXEC GetMidEnginedCars").ToList();

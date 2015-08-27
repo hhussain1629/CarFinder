@@ -19,6 +19,10 @@ namespace CarFinder.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Models
+        /// <summary>
+        /// Get a list of all models
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<string> GetModels()
         {
             var retval = db.Database.SqlQuery<string>("EXEC GetModel").ToList();
@@ -26,6 +30,12 @@ namespace CarFinder.Controllers
         }
 
         // GET: api/Models/
+        /// <summary>
+        /// Get a list of models by the selected criteria
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="make"></param>
+        /// <returns></returns>
         public IEnumerable<string> GetModelsByYearAndMake(string year, string make)
         {
             var retval = db.Database.SqlQuery<string>("EXEC GetModelsByYearAndMake @year, @make", new SqlParameter("year", year), new SqlParameter("make", make)).ToList();

@@ -26,6 +26,10 @@ namespace CarFinder.Controllers
         // GET: api/BodyStyles/SUVs    Debug this!!!!!!!!!
         
        
+        /// <summary>
+        /// Get a list of all SUVs
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Car> GetSUVs()
         {
             var retval = db.Database.SqlQuery<Car>("EXEC GetSUVs").ToList();

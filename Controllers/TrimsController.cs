@@ -19,6 +19,10 @@ namespace CarFinder.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         //GET: api/Trims
+        /// <summary>
+        /// Get a list of all trims
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<string> GetTrims()
         {
             var retval = db.Database.SqlQuery<string>("EXEC GetTrims").ToList();
@@ -28,6 +32,13 @@ namespace CarFinder.Controllers
 
 
         // GET: api/Trims
+        /// <summary>
+        /// Get a list of trims according to the criteria selected
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="make"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public IEnumerable<string> GetTrimsByYearMakeAndModel(string year, string make, string model)
         {
             var retval = db.Database.SqlQuery<string>("EXEC GetTrimsByYearMakeAndModel @year, @make, @model", new SqlParameter("year", year), new SqlParameter("make", make), new SqlParameter("model", model)).ToList();

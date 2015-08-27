@@ -18,6 +18,11 @@ namespace CarFinder.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/EngineNumCyl
+        /// <summary>
+        /// Get a list of all cars with a selected number of engine cylinders
+        /// </summary>
+        /// <param name="numcyl"></param>
+        /// <returns></returns>
         public IEnumerable<Car> GetCarsByNumCyl(string numcyl)
         {
             var retval = db.Database.SqlQuery<Car>("EXEC GetCarsByEngineSize @numcyl", new SqlParameter("numcyl", numcyl)).ToList();
