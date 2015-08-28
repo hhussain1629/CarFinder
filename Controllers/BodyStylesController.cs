@@ -102,18 +102,18 @@ namespace CarFinder.Controllers
         //    return Ok(car);
         //}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
-        private bool CarExists(int id)
-        {
-            return db.Cars.Count(e => e.Id == id) > 0;
-        }
+        //private bool CarExists(int id)
+        //{
+        //    return db.Cars.Count(e => e.Id == id) > 0;
+        //}
     }
 }

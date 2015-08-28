@@ -23,11 +23,11 @@ namespace CarFinder.Controllers
         /// Get a list of all trims
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<string> GetTrims()
-        {
-            var retval = db.Database.SqlQuery<string>("EXEC GetTrims").ToList();
-            return retval;
-        }
+        //public IEnumerable<string> GetTrims()
+        //{
+        //    var retval = db.Database.SqlQuery<string>("EXEC GetTrims").ToList();
+        //    return retval;
+        //}
 
 
 
@@ -113,18 +113,18 @@ namespace CarFinder.Controllers
         //    return Ok(car);
         //}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
-        private bool CarExists(int id)
-        {
-            return db.Cars.Count(e => e.Id == id) > 0;
-        }
+        //private bool CarExists(int id)
+        //{
+        //    return db.Cars.Count(e => e.Id == id) > 0;
+        //}
     }
 }

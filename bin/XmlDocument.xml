@@ -574,7 +574,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CarFinder.Controllers.CarsController.GetCar(System.String,System.String,System.String,System.String)">
+        <member name="M:CarFinder.Controllers.CarsController.GetCars(System.String,System.String,System.String,System.String)">
             <summary>
             Get list of cars according to provided criteria
             </summary>
@@ -582,36 +582,6 @@
             <param name="make"></param>
             <param name="model"></param>
             <param name="trim"></param>
-            <returns></returns>
-        </member>
-        <member name="M:CarFinder.Controllers.CarsController.GetCarsOrderByHorsePower">
-            <summary>
-            Get a list of all cars ordered by horsepower
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:CarFinder.Controllers.CarsController.GetCarsOrderByHorsePowerMin300HP">
-            <summary>
-            Get a list of all cars, with at least 300 HP, ordered by HP 
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:CarFinder.Controllers.CarsController.GetCarsOrderByWeight">
-            <summary>
-            Get a list of all cars ordered by weight
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:CarFinder.Controllers.CarsController.GetCarsOrderByWeightUnder2000Kg">
-            <summary>
-            Get a list of all cars under 2000 Kg, ordered by weight
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:CarFinder.Controllers.CarsController.GetCarUnder2000KgMin300Hp">
-            <summary>
-            Get a list of all cars under 2000 Kg with at least 300 HP
-            </summary>
             <returns></returns>
         </member>
         <member name="M:CarFinder.Controllers.EngineNumCylController.GetCarsByNumCyl(System.String)">
@@ -627,23 +597,11 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CarFinder.Controllers.MakesController.GetMakes">
-            <summary>
-            Get a list of all makes
-            </summary>
-            <returns></returns>
-        </member>
         <member name="M:CarFinder.Controllers.MakesController.GetMakesByYear(System.String)">
             <summary>
             Get a list of makes by year
             </summary>
             <param name="year"></param>
-            <returns></returns>
-        </member>
-        <member name="M:CarFinder.Controllers.ModelsController.GetModels">
-            <summary>
-            Get a list of all models
-            </summary>
             <returns></returns>
         </member>
         <member name="M:CarFinder.Controllers.ModelsController.GetModelsByYearAndMake(System.String,System.String)">
@@ -652,12 +610,6 @@
             </summary>
             <param name="year"></param>
             <param name="make"></param>
-            <returns></returns>
-        </member>
-        <member name="M:CarFinder.Controllers.TrimsController.GetTrims">
-            <summary>
-            Get a list of all trims
-            </summary>
             <returns></returns>
         </member>
         <member name="M:CarFinder.Controllers.TrimsController.GetTrimsByYearMakeAndModel(System.String,System.String,System.String)">

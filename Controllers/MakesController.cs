@@ -23,11 +23,11 @@ namespace CarFinder.Controllers
         /// Get a list of all makes
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<string> GetMakes()
-        {
-            var retval = db.Database.SqlQuery<string>("EXEC GetMakes").ToList();
-            return retval;
-        }
+        //public IEnumerable<string> GetMakes()
+        //{
+        //    var retval = db.Database.SqlQuery<string>("EXEC GetMakes").ToList();
+        //    return retval;
+        //}
 
         // GET: api/Makes/?year=...
         /// <summary>
@@ -107,18 +107,18 @@ namespace CarFinder.Controllers
         //    return Ok(car);
         //}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
-        private bool CarExists(int id)
-        {
-            return db.Cars.Count(e => e.Id == id) > 0;
-        }
+        //private bool CarExists(int id)
+        //{
+        //    return db.Cars.Count(e => e.Id == id) > 0;
+        //}
     }
 }
