@@ -85,7 +85,7 @@ namespace CarFinder.Controllers
                         "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" +
                         year + "%20" + make + "%20" + model + "%20" + (string.IsNullOrEmpty(trim) ? "" : ("%20" + trim))
                         );
-                    carView.Images = JsonConvert.DeserializeObject(temp).ToString();
+                    carView.Images = JsonConvert.DeserializeObject(temp);
                 }
                 catch (Exception e)
                 {
@@ -287,7 +287,7 @@ namespace CarFinder.Controllers
     {
         public Car Car { get; set; }
         public dynamic Recalls { get; set; }
-        public List<string> Images { get; set; }
+        public object Images { get; set; }
     }
 
     //public class CarViewModel : Car

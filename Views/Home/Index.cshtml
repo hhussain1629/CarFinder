@@ -12,17 +12,21 @@
                 <select ng-model="selectedModel" ng-options="model for model in models" ng-change="getTrims()" class=" = " form-control></select>
             </div>
             <div class="col-md-3">
-                <select ng-model="selectedTrim" ng-options="trim for trim in trims" ng-change="getCar()" class=" = " id = "trimList" form-control></select>
+                <select ng-model="selectedTrim" ng-options="trim for trim in trims" ng-change="getCar()" class=" = " id="trimList" form-control></select>
             </div>
         </div>
 
         <div>
+            
             {{car}}
-            <div ng-repeat="img in car.Images">
-                <img src="{{img}}" alt="" />
-            </div>
+            
+            <br />
+
+            <div ng-repeat="img in car.Images.responseData.results">
+                    <img src="{{img.url}}" alt="" />
+                </div>
         </div>
-        
+
 
 
 
