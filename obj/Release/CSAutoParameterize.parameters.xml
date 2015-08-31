@@ -4,4 +4,7 @@
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Hammad\\Documents\\Visual\ Studio\ 2013\\Projects\\CarFinder\\CarFinder\\obj\\Release\\Package\\PackageTmp\\Views\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Hammad\\Documents\\Visual\ Studio\ 2013\\Projects\\CarFinder\\CarFinder\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
+  <parameter name="HussainsDB-Web.config Connection String" description="HussainsDB Connection String used in web.config by the application to access the database." defaultValue="HussainsDB_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Hammad\\Documents\\Visual\ Studio\ 2013\\Projects\\CarFinder\\CarFinder\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='HussainsDB']/@connectionString" />
+  </parameter>
 </parameters>
