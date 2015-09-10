@@ -60,6 +60,7 @@ app.controller('CarFinderController', ['$scope', 'carSvc', function ($scope, car
                 $scope.car = data;
                 $("#displayedInfo").show();
                 $("#homepageCarousel").show();
+                $("#homepageCarousel").load();
             }
             else {
                 $scope.car = [];
