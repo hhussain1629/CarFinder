@@ -38,7 +38,7 @@
                     <div class="col-md-3">
                         <h3>Model</h3>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3" id="trimHeading">
                         <h3>Trim</h3>
                     </div>
                 </div>
@@ -53,13 +53,13 @@
                         <select ng-model="selectedModel" ng-options="model for model in models" ng-change="getTrims()" class=" = " form-control></select>
                     </div>
                     <div class="col-md-3">
-                        <select ng-model="selectedTrim" ng-options="trim for trim in trims" class=" = " id="trimList" form-control></select>
+                        <select ng-model="selectedTrim" ng-options="trim for trim in trims" ng-change="getCar()" class=" = " id="trimList" form-control></select>
                     </div>
                 </div>
                 <br />
-                <div class="row">
+                @*<div class="row" id="displayButton">
                     <button ng-click="getCar();" click=>Display Car</button>
-                </div>
+                </div>*@
 
                 <div id="displayedInfo">
                     <h3> Year: {{car.Car.model_year}}</h3>
@@ -69,10 +69,12 @@
                     <h3>Number of Cylinders: {{car.Car.engine_num_cyl}}</h3>
                     <h3>Engine Position: {{car.Car.engine_position}}</h3>
                     <h3>Engine Power: {{car.Car.engine_power_ps}} Horsepower</h3>
-                    <h3>Weight: {{car.Car.weight_kg}} Kg</h3>
+                    <h3>Weight: {{2.20462 * car.Car.weight_kg | number: 0}} lbs. ({{car.Car.weight_kg | number: 0}} kg)</h3>
+                    <br />
                     <br />
                     <h3>Recall information: </h3>
                     <div ng-repeat="result in car.Recalls.Results">
+                        <br />
                         <br />
                         <p> Manufacturer: {{result.Manufacturer}}</p>
                         <p> NHTSA Campaign Number: {{result.NHTSACampaignNumbber}}</p>
@@ -88,32 +90,39 @@
                         A vehicle matching these search criteria could not be found.
                     </div>
                     <br />
+                    <hr>
 
-                    <div id="homepageCarousel" class="carousel carousel-1 slide color-two-l" data-ride="carousel">
+                    <h4 style="text-align:center">Click on image to enlarge</h4>
+                    <br />
+                    <div class="container" id="images">
+                        <div class="row">
+                            <div ng-repeat="img in car.Images.responseData.results" class="col-sm-3">
+                                <a href="#" data-target="#{{img.imageId}}" data-toggle="modal">
+                                    <img src="{{img.tbUrl}}" />
+                                </a>
+                                <br />
+                                <a href="{{img.originalContextUrl}}" target="_blank">Go to source webpage</a>
 
-                        <div class="carousel-inner" role="listbox">
-
-                            @*<div class="item">
-
-                                </div>*@
-                            <div class="item" @*ng-class="{active: $first}"*@ ng-repeat="img in car.Images.responseData.results">
-
-                                <img src="{{img.url}}" style="width:auto; height:100%;" alt="{{selectedYear}} {{selectedMake}} {{selectedModel}}" />
-
+                                <div class="modal fade" id="{{img.imageId}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                @*<h1 class="modal-title" id="myModalLabel"></h1>*@
+                                            </div>
+                                            <div class="modal-body col-sm-12">
+                                                <a href="{{img.url}}" target="_blank">
+                                                    <img src="{{img.url}}" alt="{{selectedYear}} {{selectedMake}} {{selectedModel}}" class="img-responsive center-block" />
+                                                </a>
+                                            </div>
+                                            <div class="modal-footer no-margin">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
-
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#homepageCarousel" data-slide="prev">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                        <a class="right carousel-control" href="#homepageCarousel" data-slide="next">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-
                     </div>
-
                 </div>
                 @*<script>
                         function dispContent() {
@@ -123,12 +132,32 @@
                         }
                     </script>*@
 
+                @*<div id="homepageCarousel" class="carousel carousel-1 slide color-two-l" data-ride="carousel">
 
+                        <div class="carousel-inner" role="listbox">
+
+                            <div class="item active">
+                            </div>
+
+                            <div class="item" ng-repeat="img in car.Images.responseData.results">
+                                <a href="{{img.url}}" target="_blank">
+                                    <img src="{{img.url}}" style="width:auto; height:100%;" alt="{{selectedYear}} {{selectedMake}} {{selectedModel}}" />
+                                </a>
+                            </div>
+
+                        </div>
+
+                         Controls
+                        <a class="left carousel-control" href="#homepageCarousel" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a class="right carousel-control" href="#homepageCarousel" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+
+                    </div>*@
 
             </div>
         </div>
     </section>
 </div>
-@section scripts{
-
-}

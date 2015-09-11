@@ -4,15 +4,7 @@
 app.controller('CarFinderController', ['$scope', 'carSvc', function ($scope, carSvc) {
 
     $("#errorDisplay").hide();
-    $("#homepageCarousel").hide();
     $("#displayedInfo").hide();
-
-    $scope.selectedYear = '';
-    $scope.selectedMake = '';
-    $scope.selectedModel = '';
-    $scope.selectedTrim = '';
-   
-    
 
     $scope.years = [];
     $scope.makes = [];
@@ -21,55 +13,58 @@ app.controller('CarFinderController', ['$scope', 'carSvc', function ($scope, car
     $scope.car = [];
 
     $scope.getYears = function () {
-        //$scope.years = [];
+        $("#trimList").hide();
+        $("#trimHeading").hide();
         carSvc.getyears().then(function (data) { $scope.years = data; });
+        $scope.selectedMake = '';
     };
     $scope.getYears();
-    
+
     $scope.getMakes = function () {
-        //$scope.makes = [];
+        $("#trimList").hide();
+        $("#trimHeading").hide();
         carSvc.getmakes($scope.selectedYear).then(function (data) { $scope.makes = data; });
+        $scope.selectedModel = '';
     }
-   
+
     $scope.getModels = function () {
-        //$scope.models = [];
+        $("#trimList").hide();
+        $("#trimHeading").hide();
         carSvc.getmodels($scope.selectedYear, $scope.selectedMake).then(function (data) { $scope.models = data; });
+        $scope.selectedTrim = '';
     }
 
     $scope.getTrims = function () {
-        //$scope.trims = [];
-       
         carSvc.gettrims($scope.selectedYear, $scope.selectedMake, $scope.selectedModel).then(function (data) {
             if (data != "") {
                 $scope.trims = data;
-                $("#trimList").prop('disabled', false);
+                $("#trimList").show();
+                $("#trimHeading").show();
             }
             else {
                 $scope.trims = [];
-                $("#trimList").prop('disabled', true);
+                $("#trimList").hide();
+                $("#trimHeading").hide();
                 $scope.selectedTrim = '';
+                $scope.getCar();
             }
         });
     }
 
-    
     $scope.getCar = function () {
         carSvc.getcar($scope.selectedYear, $scope.selectedMake, $scope.selectedModel, $scope.selectedTrim).then(function (data) {
             if (data != "") {
                 $("#errorDisplay").hide();
                 $scope.car = data;
                 $("#displayedInfo").show();
-                $("#homepageCarousel").show();
-                $("#homepageCarousel").load();
             }
             else {
                 $scope.car = [];
-                $("#homepageCarousel").hide();
                 $("#displayedInfo").hide();
                 $("#errorDisplay").show();
             }
         });
-       
+
     }
 
 

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Required -->
     <link href="css/global-style.css" rel="stylesheet" type="text/css" media="screen">
-    <link rel="stylesheet" href="assets/layerslider/css/layerslider.css" type="text/css">
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
     
@@ -28,7 +27,6 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
                 </ul>
             </div>
@@ -42,8 +40,7 @@
         </footer>
     </div>
 
-    @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")*@
+    
     @RenderSection("scripts", required: false)
 
 
@@ -59,13 +56,7 @@
     <script src="~/NgApps/app.js"></script>
     <script src="~/NgApps/Controllers/CarFinderController.js"></script>
     <script src="~/NgApps/Services/CarFinderFactory.js"></script>
-    @*<script>
-    function addActive() {
-        if ($("div.item .active").length === 0) {
-            $("item:first").addClass("active");
-        }
-    }
-    </script>*@
+   
 
 
 
