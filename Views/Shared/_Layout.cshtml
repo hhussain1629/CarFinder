@@ -7,23 +7,23 @@
     <!-- Required -->
     <link href="css/global-style.css" rel="stylesheet" type="text/css" media="screen">
     <meta name="viewport" content="width=device-width" />
-    @Styles.Render("~/Content/css")
+    @*@Styles.Render("~/Content/css")*@ 
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
     
-    
+
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container" id="navbar">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Auto Finder", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                <style>
-                    navbar-brand{color: white;}
-                </style>
+                @Html.ActionLink("Auto Finder", "Index", "Home", new { area = "" }, new { @class = "navbar-brand"})
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -35,12 +35,12 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer style="background-color: white; color: black;">
+        <footer>
             <p>&copy; @DateTime.Now.Year - Hammad Hussain</p>
         </footer>
     </div>
 
-    
+
     @RenderSection("scripts", required: false)
 
 
@@ -56,35 +56,34 @@
     <script src="~/NgApps/app.js"></script>
     <script src="~/NgApps/Controllers/CarFinderController.js"></script>
     <script src="~/NgApps/Services/CarFinderFactory.js"></script>
-   
 
 
 
-    
+    <!--Additional styling-->
+    <link href="~/css/appstyle.css" rel="stylesheet" />
+
+
 
     <!--[if lt IE 9]>
         <script src="js/html5shiv.js"></script>
         <script src="js/respond.min.js"></script>
     <![endif]-->
-    
-    
-
     @*<!-- LayerSlider script files -->
-    <script src="assets/layerslider/js/layerslider.transitions.js" type="text/javascript"></script>
-    <script src="assets/layerslider/js/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
-    <!-- Initializing the slider -->
-    <script>
-        jQuery("#layerslider").layerSlider({
-            pauseOnHover: true,
-            autoPlayVideos: false,
-            skinsPath: 'assets/layerslider/skins/',
-            responsive: false,
-            responsiveUnder: 1280,
-            layersContainer: 1280,
-            skin: 'borderlessdark3d',
-            hoverPrevNext: true,
-        });
-    </script>*@
+        <script src="assets/layerslider/js/layerslider.transitions.js" type="text/javascript"></script>
+        <script src="assets/layerslider/js/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
+        <!-- Initializing the slider -->
+        <script>
+            jQuery("#layerslider").layerSlider({
+                pauseOnHover: true,
+                autoPlayVideos: false,
+                skinsPath: 'assets/layerslider/skins/',
+                responsive: false,
+                responsiveUnder: 1280,
+                layersContainer: 1280,
+                skin: 'borderlessdark3d',
+                hoverPrevNext: true,
+            });
+        </script>*@
 </body>
 
 </html>

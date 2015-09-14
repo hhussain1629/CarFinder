@@ -1,0 +1,24 @@
+﻿body {
+    background-color: gold;
+}
+
+.mainInfo {
+    font-size: large;
+}
+
+.navbar {
+    background-color: darkred;
+}
+
+.navbar-header {
+    color: yellow;
+}
+
+#App {
+    background-color: gold;
+}
+
+footer {
+    background-color: gold;
+    color: black;
+}
