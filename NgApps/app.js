@@ -1,2 +1,2 @@
-﻿// module declarations
+﻿// Module declarations
 var app = angular.module('CarFinderApp', []);

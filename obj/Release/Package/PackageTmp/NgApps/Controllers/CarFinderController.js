@@ -3,60 +3,68 @@
 
 app.controller('CarFinderController', ['$scope', 'carSvc', function ($scope, carSvc) {
 
-    $("#homepageCarousel").hide();
+    $("#errorDisplay").hide();
     $("#displayedInfo").hide();
 
+    $scope.years = [];
+    $scope.makes = [];
+    $scope.models = [];
+    $scope.trims = [];
+    $scope.car = [];
+
     $scope.getYears = function () {
-        $scope.years = [];
-        $scope.makes = [];
-        $scope.models = [];
-        $scope.trims = [];
-        $scope.selectedYear = '';
-        $scope.selectedMake = '';
-        $scope.selectedModel = '';
-        $scope.selectedTrim = '';
+        $("#trimList").hide();
+        $("#trimHeading").hide();
         carSvc.getyears().then(function (data) { $scope.years = data; });
+        $scope.selectedMake = '';
     };
     $scope.getYears();
-    
+
     $scope.getMakes = function () {
-        $scope.makes = [];
-        $scope.models = [];
-        $scope.trims = [];
-        $scope.selectedMake = '';
-        $scope.selectedModel = '';
-        $scope.selectedTrim = '';
+        $("#trimList").hide();
+        $("#trimHeading").hide();
         carSvc.getmakes($scope.selectedYear).then(function (data) { $scope.makes = data; });
-    }
-   
-    $scope.getModels = function () {
-        $scope.models = [];
-        $scope.trims = [];
         $scope.selectedModel = '';
-        $scope.selectedTrim = '';
+    }
+
+    $scope.getModels = function () {
+        $("#trimList").hide();
+        $("#trimHeading").hide();
         carSvc.getmodels($scope.selectedYear, $scope.selectedMake).then(function (data) { $scope.models = data; });
+        $scope.selectedTrim = '';
     }
 
     $scope.getTrims = function () {
-        $scope.trims = [];
-        $scope.selectedTrim = '';
         carSvc.gettrims($scope.selectedYear, $scope.selectedMake, $scope.selectedModel).then(function (data) {
             if (data != "") {
                 $scope.trims = data;
-                $("#trimList").prop('disabled', false);
+                $("#trimList").show();
+                $("#trimHeading").show();
             }
             else {
-                $("#trimList").prop('disabled', true);
+                $scope.trims = [];
+                $("#trimList").hide();
+                $("#trimHeading").hide();
+                $scope.selectedTrim = '';
                 $scope.getCar();
             }
         });
     }
 
-    $scope.car = [];
     $scope.getCar = function () {
-        carSvc.getcar($scope.selectedYear, $scope.selectedMake, $scope.selectedModel, $scope.selectedTrim).then(function (data) { $scope.car = data; });
-        $("#displayedInfo").show();
-        $("#homepageCarousel").show();
+        carSvc.getcar($scope.selectedYear, $scope.selectedMake, $scope.selectedModel, $scope.selectedTrim).then(function (data) {
+            if (data != "") {
+                $("#errorDisplay").hide();
+                $scope.car = data;
+                $("#displayedInfo").show();
+            }
+            else {
+                $scope.car = [];
+                $("#displayedInfo").hide();
+                $("#errorDisplay").show();
+            }
+        });
+
     }
 
 
