@@ -1,7 +1,4 @@
-﻿
-//var app = angular.module('CarFinderApp');
-
-app.controller('CarFinderController', ['$scope', 'carSvc', function ($scope, carSvc) {
+﻿app.controller('CarFinderController', ['$scope', 'carSvc', function ($scope, carSvc) {
 
     $("#errorDisplay").hide();
     $("#displayedInfo").hide();
@@ -16,25 +13,25 @@ app.controller('CarFinderController', ['$scope', 'carSvc', function ($scope, car
         $("#trimList").hide();
         $("#trimHeading").hide();
         carSvc.getyears().then(function (data) { $scope.years = data; });
-        $scope.selectedMake = '';
     };
     $scope.getYears();
 
     $scope.getMakes = function () {
         $("#trimList").hide();
         $("#trimHeading").hide();
+        $scope.selectedMake = '';
         carSvc.getmakes($scope.selectedYear).then(function (data) { $scope.makes = data; });
-        $scope.selectedModel = '';
     }
 
     $scope.getModels = function () {
         $("#trimList").hide();
         $("#trimHeading").hide();
+        $scope.selectedModel = '';
         carSvc.getmodels($scope.selectedYear, $scope.selectedMake).then(function (data) { $scope.models = data; });
-        $scope.selectedTrim = '';
     }
 
     $scope.getTrims = function () {
+        $scope.selectedTrim = '';
         carSvc.gettrims($scope.selectedYear, $scope.selectedMake, $scope.selectedModel).then(function (data) {
             if (data != "") {
                 $scope.trims = data;
@@ -45,7 +42,6 @@ app.controller('CarFinderController', ['$scope', 'carSvc', function ($scope, car
                 $scope.trims = [];
                 $("#trimList").hide();
                 $("#trimHeading").hide();
-                $scope.selectedTrim = '';
                 $scope.getCar();
             }
         });
@@ -66,12 +62,5 @@ app.controller('CarFinderController', ['$scope', 'carSvc', function ($scope, car
         });
 
     }
-
-
-
-
-
-
-
 
 }]);

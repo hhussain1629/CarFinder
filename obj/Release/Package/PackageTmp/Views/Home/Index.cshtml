@@ -1,32 +1,8 @@
-﻿
-
-<section id="asideMenu" class="aside-menu">
-    <form class="form-inline form-search">
-        <div class="input-group">
-            <input type="search" class="form-control" placeholder="Search..." />
-            <span class="input-group-btn">
-                <button id="btnHideAsideMenu" class="btn btn-close" type="button" title="Hide sidebar"><i class="fa fa-times"></i></button>
-            </span>
-        </div>
-    </form>
+﻿<div class="wrapper" id="App">
+    <section class="slice bg-2 p-15" id="App">
 
 
-
-    @*<h5 class="side-section-title">Social media</h5>
-        <div class="social-media">
-            <a href="#"><i class="fa fa-facebook facebook"></i></a>
-            <a href="#"><i class="fa fa-google-plus google"></i></a>
-            <a href="#"><i class="fa fa-twitter twitter"></i></a>
-        </div>*@
-</section>
-
-
-
-<div class="wrapper">
-    <section class="slice bg-2 p-15">
-
-
-        <div class="container" ng-app="CarFinderApp">
+        <div class="container" ng-app="CarFinderApp" id="App">
             <div ng-controller="CarFinderController" id="controller">
                 <div class="row">
                     <div class="col-md-3">
@@ -58,32 +34,32 @@
                 </div>
                 <br />
                 @*<div class="row" id="displayButton">
-                    <button ng-click="getCar();" click=>Display Car</button>
-                </div>*@
+                        <button ng-click="getCar();" click=>Display Car</button>
+                    </div>*@
 
                 <div id="displayedInfo">
-                    <h3> Year: {{car.Car.model_year}}</h3>
-                    <h3 style="text-transform: capitalize;">Make: {{car.Car.make}}</h3>
-                    <h3>Model: {{car.Car.model_name}}</h3>
-                    <h3>Trim: {{car.Car.model_trim}}</h3>
-                    <h3>Number of Cylinders: {{car.Car.engine_num_cyl}}</h3>
-                    <h3>Engine Position: {{car.Car.engine_position}}</h3>
-                    <h3>Engine Power: {{car.Car.engine_power_ps}} Horsepower</h3>
-                    <h3>Weight: {{2.20462 * car.Car.weight_kg | number: 0}} lbs. ({{car.Car.weight_kg | number: 0}} kg)</h3>
+                    <p class="mainInfo"> Year: {{car.Car.model_year}}</p>
+                    <p class="mainInfo" style="text-transform: capitalize;">Make: {{car.Car.make}}</p>
+                    <p class="mainInfo">Model: {{car.Car.model_name}}</p>
+                    <p class="mainInfo">Trim: {{car.Car.model_trim}}</p>
+                    <p class="mainInfo">Number of Cylinders: {{car.Car.engine_num_cyl}}</p>
+                    <p class="mainInfo">Engine Position: {{car.Car.engine_position}}</p>
+                    <p class="mainInfo">Engine Power: {{car.Car.engine_power_ps}} Horsepower</p>
+                    <p class="mainInfo">Weight: {{2.20462 * car.Car.weight_kg | number: 0}} lbs. ({{car.Car.weight_kg | number: 0}} kg)</p>
                     <br />
                     <br />
                     <h3>Recall information: </h3>
                     <div ng-repeat="result in car.Recalls.Results">
                         <br />
                         <br />
-                        <p> Manufacturer: {{result.Manufacturer}}</p>
-                        <p> NHTSA Campaign Number: {{result.NHTSACampaignNumbber}}</p>
-                        <p> Date Report Received: {{result.ReportReceivedDate}}</p>
-                        <p> Component: {{result.Component}}</p>
-                        <p> Summary: {{result.Summary}}</p>
-                        <p> Consequence: {{result.Conequence}}</p>
-                        <p> Remedy: {{result.Remedy}}</p>
-                        <p> Notes: {{result.Notes}}</p>
+                        <p class="recallInfo"> Manufacturer: {{result.Manufacturer}}</p>
+                        <p class="recallInfo"> NHTSA Campaign Number: {{result.NHTSACampaignNumbber}}</pclass>
+                        <p class="recallInfo"> Date Report Received: {{result.ReportReceivedDate}}</p>
+                        <p class="recallInfo"> Component: {{result.Component}}</p>
+                        <p class="recallInfo"> Summary: {{result.Summary}}</p>
+                        <p class="recallInfo"> Consequence: {{result.Conequence}}</p>
+                        <p class="recallInfo"> Remedy: {{result.Remedy}}</p>
+                        <p class="recallInfo"> Notes: {{result.Notes}}</p>
                     </div>
 
                     <div id="errorDisplay">

@@ -37,7 +37,7 @@ namespace CarFinder.Controllers
         /// <returns></returns>
         public IEnumerable<string>GetMakesByYear(string year)
         {
-            var retval = db.Database.SqlQuery<string>("EXEC GetMakesByYear @year", new SqlParameter("year", year)).ToList();
+            var retval = db.Database.SqlQuery<string>("EXEC GetMakes @year", new SqlParameter("year", year)).ToList();
             return retval;
         }
 

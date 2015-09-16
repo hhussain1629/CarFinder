@@ -41,7 +41,7 @@ namespace CarFinder.Controllers
         /// <returns></returns>
         public IEnumerable<string> GetTrimsByYearMakeAndModel(string year, string make, string model)
         {
-            var retval = db.Database.SqlQuery<string>("EXEC GetTrimsByYearMakeAndModel @year, @make, @model", new SqlParameter("year", year), new SqlParameter("make", make), new SqlParameter("model", model)).ToList();
+            var retval = db.Database.SqlQuery<string>("EXEC GetTrims @year, @make, @model", new SqlParameter("year", year), new SqlParameter("make", make), new SqlParameter("model", model)).ToList();
             return retval;
         }
 

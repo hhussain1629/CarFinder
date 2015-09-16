@@ -1,0 +1,40 @@
+﻿body {
+    background-color: gold;
+}
+
+.mainInfo {
+    font-size: large;
+}
+
+.navbar {
+    background-color: darkred;
+}
+
+.navbar-header {
+    color: yellow;
+}
+
+#App {
+    background-color: gold;
+}
+
+.appLabel {
+    color: yellow;
+}
+
+#title {
+    font-size: xx-large;
+    text-align: center;
+}
+
+#API {
+    font-size: medium;
+    /*vertical-align: bottom;*/
+    text-align: right;
+}
+
+
+footer {
+    background-color: gold;
+    color: black;
+}

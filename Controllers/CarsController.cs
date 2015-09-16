@@ -39,20 +39,28 @@ namespace CarFinder.Controllers
         public async Task<IHttpActionResult> GetCars(string year, string make, string model, string trim)
         {
             var carList = new List<Car>();
-            if (trim == null || trim == "")
+            try
             {
-                carList = db.Database.SqlQuery<Car>("EXEC GetCarsByYearMakeAndModel @year, @make, @model",
-                    new SqlParameter("year", year),
-                    new SqlParameter("make", make),
-                    new SqlParameter("model", model)).ToList();
+                
+                //if (trim == null || trim == "")
+                //{
+                //    carList = db.Database.SqlQuery<Car>("EXEC GetCarsByYearMakeAndModel @year, @make, @model",
+                //        new SqlParameter("year", year),
+                //        new SqlParameter("make", make),
+                //        new SqlParameter("model", model)).ToList();
+                //}
+                //else
+                //{
+                carList = db.Database.SqlQuery<Car>("EXEC GetCars @year, @make, @model, @trim",
+                    new SqlParameter("year", year ?? ""),
+                    new SqlParameter("make", make ?? ""),
+                    new SqlParameter("model", model ?? ""),
+                    new SqlParameter("trim", trim ?? "")).ToList();
+                //}
             }
-            else
+            catch(Exception ex) 
             {
-                carList = db.Database.SqlQuery<Car>("EXEC GetCarsByYearMakeModelAndTrim @year, @make, @model, @trim",
-                    new SqlParameter("year", year),
-                    new SqlParameter("make", make),
-                    new SqlParameter("model", model),
-                    new SqlParameter("trim", trim)).ToList();
+                var err = ex.ToString();        
             }
 
             var car = carList[0];

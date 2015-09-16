@@ -249,9 +249,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
-    <Content Include="css\appstyle.css" />
-    <Content Include="css\global-style.css" />
-    <Content Include="css\_notes\dwsync.xml" />
+    <Content Include="SpecStyles\appstyle.css" />
+    <Content Include="Content\css\global-style.css" />
+    <Content Include="Content\css\_notes\dwsync.xml" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="NgApps\app.js" />
@@ -319,10 +319,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="css\buttons.less" />
-    <Content Include="css\global-style.less" />
-    <Content Include="css\shortcodes.less" />
-    <Content Include="css\themes.less" />
     <Content Include="Views\Home\Index.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -334,6 +330,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Properties\PublishProfiles\CarFinderProject.pubxml" />
     <None Include="Properties\PublishProfiles\HussainCarFinder %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\HussainCarFinder %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\HussainCarFinder.pubxml" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
