@@ -2,6 +2,7 @@
 
     $("#errorDisplay").hide();
     $("#displayedInfo").hide();
+    $("#logoImage").show();
 
     $scope.years = [];
     $scope.makes = [];
@@ -49,6 +50,7 @@
 
     $scope.getCar = function () {
         carSvc.getcar($scope.selectedYear, $scope.selectedMake, $scope.selectedModel, $scope.selectedTrim).then(function (data) {
+            $("#logoImage").hide();
             if (data != "") {
                 $("#errorDisplay").hide();
                 $scope.car = data;

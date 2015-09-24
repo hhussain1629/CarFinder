@@ -20,13 +20,14 @@
         <div class="container" id="navbar">
             <div class="row">
                 <div class="col-xs-4">
+                    <a href="https://hhussain.azurewebsites.net/Home/Index/#header" target="_blank"><i id="home">Home</i></a>
                 </div>
                 <div class="col-xs-4 appLabel" id="title">
                     <i>@Html.ActionLink("Auto Finder", "Index", "Home", new { @class = "appLabel hoverLabel" })</i>
                 </div>
-                <div class="col-xs-4">
+                @*<div class="col-xs-4">
                     @Html.ActionLink("API", "Index", "Help", new { area = ""}, new {@class="appLabel hoverLabel", @id="API" })
-                </div>
+                </div>*@
 
                 @*<div class="navbar-header">
                 @Html.ActionLink("Auto Finder", "Index", "Home", new { area = "" }, new { @class = "navbar-brand"})
@@ -41,7 +42,9 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        @*<hr style="float:right;"/>*@
+        <br />
+        <br />
         <footer>
             <p>&copy; @DateTime.Now.Year - Hammad Hussain</p>
         </footer>

@@ -1,5 +1,6 @@
 ﻿body {
     background-color: gold;
+    margin: auto;
 }
 
 .mainInfo {
@@ -22,9 +23,18 @@
     color: yellow;
 }
 
-#title {
+#title{
     font-size: xx-large;
     text-align: center;
+}
+
+#home{
+    font-size: x-large;
+    text-align: center;
+    color: yellow;
+}
+#logoImage {
+    
 }
 
 #API {

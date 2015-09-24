@@ -33,10 +33,24 @@
                     </div>
                 </div>
                 <br />
+                <hr />
                 @*<div class="row" id="displayButton">
                         <button ng-click="getCar();" click=>Display Car</button>
                     </div>*@
 
+                <div id="logoImage">
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-3"></div>
+                        <div class="col-xs-6">
+                            <img src="~/Img/Holden-ovalcrop-medium.png" />
+                        </div>
+                        <div class="col-xs-3"></div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                </div>
                 <div id="displayedInfo">
                     <p class="mainInfo"> Year: {{car.Car.model_year}}</p>
                     <p class="mainInfo" style="text-transform: capitalize;">Make: {{car.Car.make}}</p>
@@ -47,20 +61,8 @@
                     <p class="mainInfo">Engine Power: {{car.Car.engine_power_ps}} Horsepower</p>
                     <p class="mainInfo">Weight: {{2.20462 * car.Car.weight_kg | number: 0}} lbs. ({{car.Car.weight_kg | number: 0}} kg)</p>
                     <br />
-                    <br />
-                    <h3>Recall information: </h3>
-                    <div ng-repeat="result in car.Recalls.Results">
-                        <br />
-                        <br />
-                        <p class="recallInfo"> Manufacturer: {{result.Manufacturer}}</p>
-                        <p class="recallInfo"> NHTSA Campaign Number: {{result.NHTSACampaignNumbber}}</p>
-                        <p class="recallInfo"> Date Report Received: {{result.ReportReceivedDate}}</p>
-                        <p class="recallInfo"> Component: {{result.Component}}</p>
-                        <p class="recallInfo"> Summary: {{result.Summary}}</p>
-                        <p class="recallInfo"> Consequence: {{result.Conequence}}</p>
-                        <p class="recallInfo"> Remedy: {{result.Remedy}}</p>
-                        <p class="recallInfo"> Notes: {{result.Notes}}</p>
-                    </div>
+                    
+                    
 
                     <div id="errorDisplay">
                         A vehicle matching these search criteria could not be found.
@@ -99,7 +101,25 @@
                             </div>
                         </div>
                     </div>
+                    <br />
+                    <br />
+                    <hr />
+                    <h3>Recall information: </h3>
+                    <div ng-repeat="result in car.Recalls.Results">
+                        <br />
+                        <br />
+                        <p class="recallInfo"> Manufacturer: {{result.Manufacturer}}</p>
+                        <p class="recallInfo"> NHTSA Campaign Number: {{result.NHTSACampaignNumbber}}</p>
+                        <p class="recallInfo"> Date Report Received: {{result.ReportReceivedDate}}</p>
+                        <p class="recallInfo"> Component: {{result.Component}}</p>
+                        <p class="recallInfo"> Summary: {{result.Summary}}</p>
+                        <p class="recallInfo"> Consequence: {{result.Conequence}}</p>
+                        <p class="recallInfo"> Remedy: {{result.Remedy}}</p>
+                        <p class="recallInfo"> Notes: {{result.Notes}}</p>
+                    </div>
                 </div>
+                <br />
+                <br />
             </div>
         </div>
     </section>
