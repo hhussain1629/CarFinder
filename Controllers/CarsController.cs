@@ -93,6 +93,7 @@ namespace CarFinder.Controllers
                         "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" +
                         year + "%20" + make + "%20" + model + "%20" + (string.IsNullOrEmpty(trim) ? "" : ("%20" + trim))
                         );
+                    //await Task.Delay(3000);
                     carView.Images = JsonConvert.DeserializeObject(temp);
                 }
                 catch (Exception e)
