@@ -24,7 +24,37 @@ namespace CarFinder.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        public IEnumerable<Bing.ImageResult> GetImages(string year, string make, string model, string trim)
+        {
+            string query = "";
 
+            //if (trim == null)
+            query = year + " " + make + " " + model;
+            //else
+            //    query = year + " " + make + " " + model + " " + trim;
+
+            // Create a Bing container.
+            string rootUri = "https://api.datamarket.azure.com/Bing/Search";
+            var bingContainer = new Bing.BingSearchContainer(new Uri(rootUri));
+
+            // Replace this value with your account key.
+            var accountKey = "bFrWiOhaXScS2yyTcXpzk2s5+Gc78yRDhp/qjHKYU+8";
+
+            // Configure bingContainer to use your credentials.
+            bingContainer.Credentials = new NetworkCredential(accountKey, accountKey);
+
+            // Build the query.
+            var imageQuery = bingContainer.Image(query, null, null, null, null, null, null);
+            imageQuery = imageQuery.AddQueryOption("$top", 4);
+            var imageResults = imageQuery.Execute();
+
+            // if response code != 200, skip the image
+
+
+            // extract the properties needed for the images
+            
+            return imageResults;
+        }
 
         // GET: api/Cars
         /// <summary>
@@ -36,6 +66,7 @@ namespace CarFinder.Controllers
         /// <param name="trim"></param>
         /// <returns></returns>
 
+        [Route("api/Cars/")]
         public async Task<IHttpActionResult> GetCars(string year, string make, string model, string trim)
         {
             var carList = new List<Car>();
@@ -85,22 +116,32 @@ namespace CarFinder.Controllers
                 }
             }
 
-            using (var imageClient = new WebClient())
+            //Get car images using Bing Search API
+            var imageResults = GetImages(year, make, model, trim);
+            List<string> images = new List<string>();
+            foreach (var result in imageResults)
             {
-                try
-                {
-                    var temp = imageClient.DownloadString(
-                        "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" +
-                        year + "%20" + make + "%20" + model + "%20" + (string.IsNullOrEmpty(trim) ? "" : ("%20" + trim))
-                        );
-                    //await Task.Delay(3000);
-                    carView.Images = JsonConvert.DeserializeObject(temp);
-                }
-                catch (Exception e)
-                {
-                    return InternalServerError(e);
-                }
+                images.Add(result.MediaUrl);
             }
+            carView.Images = images;
+            //carView.Images = JsonConvert.DeserializeObject(images);
+
+
+            //using (var imageClient = new WebClient())
+            //{
+            //    try
+            //    {
+            //        var temp = imageClient.DownloadString(
+            //            "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" +
+            //            year + "%20" + make + "%20" + model + "%20" + (string.IsNullOrEmpty(trim) ? "" : ("%20" + trim))
+            //            );
+            //        carView.Images = JsonConvert.DeserializeObject(temp);
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        return InternalServerError(e);
+            //    }
+            //}
 
 
             return Ok(carView);
